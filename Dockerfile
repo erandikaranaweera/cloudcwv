@@ -1,5 +1,5 @@
 FROM bitnami/node:9 as builder
-ENV NODE_ENV="production"
+ENV node_env="production"
 
 # Copy app's source code to the /app directory
 COPY . /app
@@ -11,7 +11,7 @@ WORKDIR /app
 RUN npm install
 
 FROM bitnami/node:9-prod
-ENV NODE_ENV="production"
+ENV node_env="production"
 COPY --from=builder /app /app
 WORKDIR /app
 ENV PORT 3000
