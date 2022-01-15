@@ -1,13 +1,21 @@
-# use a node base image
-FROM node:7-onbuild
+FROM bitnami/node:9 as builder
+ENV NODE_ENV="production"
 
-# set maintainer
-LABEL maintainer "erandiranaweera@gmail.com"
+# Copy app's source code to the /app directory
+COPY . /app
 
-# set a health check
-HEALTHCHECK --interval=5s \
-            --timeout=5s \
-            CMD curl -f http://127.0.0.1:3000 || exit 1
+# The application's directory will be the working directory
+WORKDIR /app
 
-# tell docker what port to expose
+# Install Node.js dependencies defined in '/app/packages.json'
+RUN npm install
+
+FROM bitnami/node:9-prod
+ENV NODE_ENV="production"
+COPY --from=builder /app /app
+WORKDIR /app
+ENV PORT 3000
 EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]
