@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  labels:
+    app: cloudcw
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: cloudcw
+      
+  template:
+    metadata:
+      labels:
+        app: cloudcw
+        tier: cloudcw
+    spec:
+      containers:
+        - name: hello
+          image: erandiranaweera/cloudcw:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 3000
+            name: cloudcw
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcw
+  labels:
+    app: cloudcw
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: hello
+    tier: hello
+  type: LoadBalancer
