@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
+  name: cloudcw
   labels:
     app: cloudcw
 spec:
@@ -18,7 +18,7 @@ spec:
         tier: cloudcw
     spec:
       containers:
-        - name: hello
+        - name: cloudcw
           image: erandiranaweera/cloudcw:latest
           imagePullPolicy: Always
           ports:
