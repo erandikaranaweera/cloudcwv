@@ -5,7 +5,7 @@ pipeline {
         CLUSTER_NAME = '<<Your GKE Cluster Name>>'
         LOCATION = '<<Your GKE Cluster Location>>'
         CREDENTIALS_ID = 'erandiranaweera'
-        registry = "erandiranaweera/cloudcw"
+        registry = "cloudcw"
     }
     stages {
         stage("Checkout code") {
