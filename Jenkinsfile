@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = '<<Your GCP Project ID>>'
+        PROJECT_ID = 'erandiranaweera'
         CLUSTER_NAME = '<<Your GKE Cluster Name>>'
         LOCATION = '<<Your GKE Cluster Location>>'
         CREDENTIALS_ID = 'erandiranaweera'
