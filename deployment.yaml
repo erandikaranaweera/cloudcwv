@@ -20,7 +20,7 @@ spec:
       containers:
         - name: cloudcw
           image: erandiranaweera/cloudcw:latest
-          imagePullPolicy: always
+          imagePullPolicy: Always
           ports:
           - containerPort: 3000
             name: cloudcw
