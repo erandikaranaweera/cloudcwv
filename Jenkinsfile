@@ -15,7 +15,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker build . -t erandiranaweera/cloudcw
+                    myapp = docker.build("erandiranaweera/cloudcw:${env.BUILD_ID}")
                 }
             }
         }
