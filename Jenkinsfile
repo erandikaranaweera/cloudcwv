@@ -5,6 +5,7 @@ pipeline {
         CLUSTER_NAME = '<<Your GKE Cluster Name>>'
         LOCATION = '<<Your GKE Cluster Location>>'
         CREDENTIALS_ID = 'erandiranaweera'
+        registry = "erandiranaweera/cloudcw"
     }
     stages {
         stage("Checkout code") {
@@ -15,7 +16,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("erandiranaweera/cloudcw:${env.BUILD_ID}")
+                    myapp = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
