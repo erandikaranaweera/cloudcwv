@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         }
-        stage("Push image1") {
+        stage("Push image") {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
@@ -28,7 +28,7 @@ pipeline {
                     }
                 }
             }
-        }        
+             
         stage('Deploy to GKE') {
             steps{
                 sh "sed -i 's/cloudcw:latest/cloudcw:${env.BUILD_ID}/g' deployment.yaml"
