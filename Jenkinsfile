@@ -28,7 +28,7 @@ pipeline {
                     }
                 }
             }
-             
+        }    
         stage('Deploy to GKE') {
             steps{
                 sh "sed -i 's/cloudcw:latest/cloudcw:${env.BUILD_ID}/g' deployment.yaml"
