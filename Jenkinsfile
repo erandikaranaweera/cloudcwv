@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         PROJECT_ID = 'erandiranaweera'
-        CLUSTER_NAME = '<<Your GKE Cluster Name>>'
-        LOCATION = '<<Your GKE Cluster Location>>'
+        CLUSTER_NAME = 'cluster-1'
+        LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'erandiranaweera'
     }
     stages {
