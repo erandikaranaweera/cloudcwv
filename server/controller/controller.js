@@ -11,8 +11,9 @@ exports.create = (req,res)=>{
     // new trade
     const user = new Userdb({
         name : req.body.name,
-        email : req.body.email,
-        bitcoin: req.body.bitcoin,
+        crypto: req.body.crypto,
+        amount: req.body.amount,
+        currency : req.body.currency,
         status : req.body.status
     })
 
