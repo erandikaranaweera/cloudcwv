@@ -22,5 +22,10 @@
     "mongoose": "^6.1.6",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.4",
+    "should": "^13.2.3",
+    "supertest": "^6.2.2"
   }
 }
