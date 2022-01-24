@@ -1,21 +1,20 @@
-FROM bitnami/node:9 as builder
-ENV node_env="production"
+# Use the official lightweight Node.js 16 image.
+# https://hub.docker.com/_/node
+FROM node:17-slim
 
-# Copy app's source code to the /app directory
-COPY . /app
+# Create and change to the app directory.
+WORKDIR /usr/src/app
 
-# The application's directory will be the working directory
-WORKDIR /app
+# Copy application dependency manifests to the container image.
+# A wildcard is used to ensure both package.json AND package-lock.json are copied.
+# Copying this separately prevents re-running npm install on every code change.
+COPY package*.json ./
 
-# Install Node.js dependencies defined in '/app/packages.json'
-RUN npm install
+# Install production dependencies.
+RUN npm install --only=production
 
-FROM bitnami/node:9-prod
-ENV node_env="production"
-COPY --from=builder /app /app
-WORKDIR /app
-ENV PORT 3000
-EXPOSE 3000
+# Copy local code to the container image.
+COPY . ./
 
-# Start the application
-CMD ["node", "server.js"]
+# Run the web service on container startup.
+CMD [ "npm", "start" ]
