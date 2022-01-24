@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nlp-app
-        image: gcr.io/k8s-sent-deployment/myapp:v1
+        image: gcr.io/cloudcw-338918/myapp:v1
         ports:
         - containerPort: 3000
