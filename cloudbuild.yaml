@@ -1,18 +1,18 @@
 steps:
 #Build the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/cloudcoursework-339005/myapp:v1', '.']
+  args: ['build', '-t', 'gcr.io/cloudcw-338918/myapp:v1', '.']
   timeout: 180s
 
 #Push the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/cloudcoursework-339005/myapp:v1']
+  args: ['push', 'gcr.io/cloudcw-3389185/myapp:v1']
 
 # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
   - --filename=K8s_configs/
-  - --image=gcr.io/cloudcoursework-339005/myapp:v1
+  - --image=gcr.io/cloudcw-338918/myapp:v1
   - --location=us-central1-c
   - --cluster=cluster-2
