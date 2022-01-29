@@ -15,4 +15,4 @@ steps:
   - --filename=K8s_configs/
   - --image=gcr.io/cloudcw-338918/myapp:v1
   - --location=us-central1-c
-  - --cluster=cluster-2
+  - --cluster=cluster-1
